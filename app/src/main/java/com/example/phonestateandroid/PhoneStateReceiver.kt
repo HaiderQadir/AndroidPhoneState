@@ -15,9 +15,9 @@ class PhoneStateReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
 
         try {
-
             var telephonyManager =
                 context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+
             telephonyManager.listen(object : PhoneStateListener() {
                 @RequiresApi(Build.VERSION_CODES.P)
                 override fun onCallStateChanged(state: Int, phoneNumber: String?) {
@@ -27,7 +27,6 @@ class PhoneStateReceiver : BroadcastReceiver() {
                     when (state) {
                         TelephonyManager.CALL_STATE_RINGING -> {
                             mData = "PHONE_RINGING";
-
                         }
                         TelephonyManager.CALL_STATE_IDLE -> {
                             mData = "PHONE_IDLE";
